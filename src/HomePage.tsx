@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Layout, Menu, Row, Space, Typography } from "antd";
+import { Card, Col, Input, Layout, Menu, Row, Space, Typography } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -8,6 +8,8 @@ import {
 import { BooksTable } from ".";
 
 const { Header, Content, Sider } = Layout;
+const { Search } = Input;
+const onSearch = (value: string) => console.log(value);
 
 const HomePage = () => {
   return (
@@ -49,17 +51,20 @@ const HomePage = () => {
             </Menu.SubMenu>
           </Menu>
         </Sider>
-        <Layout style={{ padding: "0 24px 24px" }}>
+        <Layout
+          style={{ padding: "0 24px 24px" }}
+        >
           <Content
-            className="site-layout-background"
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-            }}
+          className="site-layout-background"
+          style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 280,
+          }}
           >
+            <Typography.Title>Welcome to Book Over There</Typography.Title>
             <Row gutter={16}>
-              <Col span={6}>
+              <Col span={8}>
                 <Card>
                   <Space>
                     <small>Số lượng sách</small>
@@ -67,7 +72,7 @@ const HomePage = () => {
                   <Typography.Title>100</Typography.Title>
                 </Card>
               </Col>
-              <Col span={6}>
+              <Col span={8}>
                 <Card>
                   <Space>
                     <small>Số lượng thành viên</small>
@@ -75,7 +80,7 @@ const HomePage = () => {
                   <Typography.Title>20</Typography.Title>
                 </Card>
               </Col>
-              <Col span={6}>
+              <Col span={8}>
                 <Card>
                   <Space>
                     <small>Số lượt mượn sách</small>
@@ -84,6 +89,15 @@ const HomePage = () => {
                 </Card>
               </Col>
             </Row>
+            <Space style={{ margin: '16px 0', width: 'inherit' }}>
+              <Search
+                placeholder="Search for title, author"
+                allowClear
+                enterButton="Search"
+                size="large"
+                onSearch={onSearch}
+              />
+            </Space>
             <Row>
               <BooksTable />
             </Row>
